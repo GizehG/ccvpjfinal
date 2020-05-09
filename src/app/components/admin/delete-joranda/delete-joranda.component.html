@@ -1,0 +1,50 @@
+<div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>Eliminar una jornada</h3>
+</div>
+<mat-grid-list cols=3 rowHeight="45%">
+    <mat-grid-tile rowspan="2" colspan="3">
+        <mat-vertical-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Ingrese el código de la jornada a eliminar</ng-template>
+                    <mat-form-field>
+                        <mat-label>Código</mat-label>
+                        <input matInput placeholder="eg. 1328" formControlName="codigo" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>Nombre de la joranda</ng-template>
+                <p>Está a punto de eliminar la jornada {{jornadaName}}</p>
+                <p>con horario de {{oldInHH}} a {{oldOutHH}}, ¿continuar?</p>
+                <div>
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <button mat-button matStepperNext (click)="delete()">Continuar</button>
+                </div>
+            </mat-step>
+
+            
+            <mat-step>
+                <ng-template matStepLabel>¡Listo!</ng-template>
+                <p>La jornada ha sido eliminada correctamente.</p>
+                <div>
+                    <!-- <button mat-button matStepperPrevious>Atrás</button> -->
+                    <!-- Dev options -->
+                    <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+                    <!-- <button mat-button (click)="displayDataP2()">Print</button> -->
+                    <button mat-button (click)="goBack()">Guardar y Regresar</button>
+                </div>
+            </mat-step>
+        </mat-vertical-stepper>
+    </mat-grid-tile>
+
+
+</mat-grid-list>

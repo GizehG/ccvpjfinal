@@ -1,0 +1,55 @@
+<mat-grid-list cols=3 rowHeight="30%">
+
+    <mat-grid-tile rowspan="1" colspan="3">
+        <div>
+            <br>
+            <br>
+            <h3>Ingresar un nuevo departamento</h3>
+        </div>
+    </mat-grid-tile>
+    <!-- ************************ -->
+    <mat-grid-tile rowspan="1" colspan="3">
+        <!-- <p class = "title">
+            Departamento
+        </p> -->
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Ingrese el nombre del departamento</ng-template>
+                    <mat-form-field>
+                        <mat-label>Departamento</mat-label>
+                        <input matInput placeholder="eg. Depto. de Ciencias Físicas" formControlName="depa" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="thirdFormGroup">
+                <ng-template matStepLabel>Obtenga un código para el departamento</ng-template>
+                <div class = "monospace">
+                    Código:   {{randomID}}
+                </div>
+                <button mat-button  (click) = "generateRandomID()">Generar</button>
+                <button mat-button matStepperPrevious>Atrás</button>
+                <button mat-button matStepperNext >SIguiente</button>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>¡Listo!</ng-template>
+                <p>El departamento ha sido agragado.</p>
+                <div>
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <!-- Dev options -->
+                    <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+                    <button mat-button (click)="displayDataD()">Print</button>
+                    <button mat-button (click)="goBack()">Guardar y Regresar</button>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </mat-grid-tile>
+    <!-- *************** -->
+
+    <mat-grid-tile rowspan="1" colspan="3"></mat-grid-tile>
+</mat-grid-list>

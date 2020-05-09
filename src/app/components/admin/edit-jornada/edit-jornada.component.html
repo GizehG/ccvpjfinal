@@ -1,0 +1,68 @@
+<div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>Editar la jornada</h3>
+</div>
+<mat-grid-list cols=3 rowHeight="45%">
+    <mat-grid-tile rowspan="2" colspan="3">
+        <mat-vertical-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Ingrese el código de la jornada a editar</ng-template>
+                    <mat-form-field>
+                        <mat-label>Código</mat-label>
+                        <input matInput placeholder="eg. 1328" formControlName="codigo" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="secondFormGroup">
+                <ng-template matStepLabel>Nombre de la joranda</ng-template>
+                <p>Está a punto de editar las horas de la jornada {{jornadaName}}, ¿continuar?</p>
+                <div>
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <button mat-button matStepperNext (click)="update()">Continuar</button>
+                </div>
+            </mat-step>
+
+            <mat-step [stepControl]="thirdFormGroup">
+                <form [formGroup]="thirdFormGroup">
+                    <ng-template matStepLabel>Ingresar los nuevos horarios</ng-template>
+                    <mat-form-field>
+                        <mat-label>Hora de entrada</mat-label>
+                        <input matInput type="time" formControlName="newIn" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Hora de salida</mat-label>
+                        <input matInput type="time" formControlName="newOut" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperPrevious>Atrás</button>
+                        <button mat-button matStepperNext (click) = "update()">Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>¡Listo!</ng-template>
+                <p>Las horas han sido modificadas correctamente.</p>
+                <p>La hora de entrada {{oldInHH}} ha sido modificada a {{newInHH}}.</p>
+                <p>La hora de salida {{oldOutHH}} ha sido modificada a {{newOutHH}}.</p>
+                <div>
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <!-- Dev options -->
+                    <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+                    <!-- <button mat-button (click)="displayDataP2()">Print</button> -->
+                    <button mat-button (click)="goBack()">Guardar y Regresar</button>
+                </div>
+            </mat-step>
+        </mat-vertical-stepper>
+    </mat-grid-tile>
+
+
+</mat-grid-list>

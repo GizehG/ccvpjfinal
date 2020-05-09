@@ -1,0 +1,50 @@
+<div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>Borrar un permiso</h3>
+</div>
+<mat-grid-list cols=3 rowHeight="45%">
+    <mat-grid-tile rowspan="2" colspan="3">
+        <mat-vertical-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Ingrese el código del permiso a eliminar</ng-template>
+                    <mat-form-field>
+                        <mat-label>Código</mat-label>
+                        <input matInput placeholder="eg. 1328" formControlName="codigo" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="secondFormGroup">
+                <ng-template matStepLabel>Datos del permiso</ng-template>
+                <p>Está a punto de eliminar el permiso con fecha del {{fechaPermiso}} </p>
+                <p>que tiene como motivo: {{motivoPermiso}}.</p>
+                <p>¿Continuar?</p>
+                <div>
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <button mat-button matStepperNext (click)="delete()">Continuar</button>
+                </div>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>¡Listo!</ng-template>
+                <p>Se ha eliminado el permiso correctamente.</p>
+                <div>
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <button mat-button (click)="goBack()">Guardar y Regresar</button>
+                    <!-- Dev options -->
+                    <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+                    <!-- <button mat-button (click)="displayDataP2()">Print</button> -->
+                </div>
+            </mat-step>
+        </mat-vertical-stepper>
+    </mat-grid-tile>
+
+
+</mat-grid-list>

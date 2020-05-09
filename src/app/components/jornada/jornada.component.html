@@ -1,0 +1,76 @@
+
+
+<mat-grid-list cols=3 rowHeight="30%">
+
+    <mat-grid-tile rowspan="1" colspan="3">
+        <div>
+            <br>
+            <br>
+            <h3>Ingresar una nueva jornada</h3>
+        </div>
+    </mat-grid-tile>
+    <!-- ************************ -->
+    <mat-grid-tile rowspan="1" colspan="3">
+        <!-- <p class = "title">
+            Jornada
+        </p> -->
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Ingrese la jornada</ng-template>
+                    <mat-form-field>
+                        <mat-label>Jornada</mat-label>
+                        <input matInput placeholder="eg. Matutina" formControlName="jornada" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+            
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Ingresar los horarios</ng-template>
+                    <mat-form-field>
+                        <mat-label>Hora de entrada</mat-label>
+                        <input matInput type="time" formControlName="hora_In" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Hora de salida</mat-label>
+                        <input matInput type="time" formControlName="hora_Out" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperPrevious>Atrás</button>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="thirdFormGroup">
+                <ng-template matStepLabel>Obtener un código para la jornada</ng-template>
+                <div class = "monospace">
+                    Código:   {{randomID}}
+                </div>
+                <button mat-button  (click) = "generateRandomID()">Generar</button>
+                <button mat-button matStepperNext >Siguiente</button>
+                <button mat-button matStepperPrevious>Atrás</button>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>Terminar</ng-template>
+                <p>¡Todo listo!</p>
+                <div>
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <!-- Dev options -->
+                    <button mat-button (click)="displayDataJ()">Print</button>
+                    <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+                    <button mat-button (click)="goBack()">Grabar y Regresar</button>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </mat-grid-tile>
+    <!-- *************** -->
+
+    <mat-grid-tile rowspan="1" colspan="3"></mat-grid-tile>
+</mat-grid-list>
+

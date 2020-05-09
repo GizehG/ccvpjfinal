@@ -1,0 +1,155 @@
+<div>
+    <br>
+    <br>
+    <h3>Ingresar un nuevo empleado</h3>
+</div>
+
+<mat-grid-list cols=3 rowHeight="30%">
+    <!-- EMPLEADO -->
+    <mat-grid-tile rowspan="1" colspan="3">
+        <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+            {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+        </button> -->
+        <p class = "title">
+            Personal
+        </p>
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Ingresar el nombre</ng-template>
+                    <mat-form-field>
+                        <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="eg. Maria Guerra" formControlName="name" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Ingresar la edad</ng-template>
+                    <mat-form-field>
+                        <mat-label>Edad</mat-label>
+                        <input matInput formControlName="age" placeholder="eg. 28" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperPrevious>Atrás</button>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="thirdFormGroup">
+                <ng-template matStepLabel>Obtenga el código del empleado</ng-template>
+                <div class = "monospace">
+                    Código: {{randomID}}
+                </div>
+                <button mat-button  (click) = "generateRandomID()">Generar</button>
+                <button mat-button matStepperPrevious>Atrás</button>
+                <button mat-button matStepperNext >Siguiente</button>
+            </mat-step>
+            
+
+            <mat-step>
+                <ng-template matStepLabel>Listo</ng-template>
+                <p>Listo, procesa a llenar los datos de la jornada y el departamento</p>
+                <div>
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <!-- Dev options -->
+                    <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+                    <button mat-button (click)="displayDataE()">Print</button>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </mat-grid-tile>
+    <!-- ************************ -->
+
+    <!-- Jornada -->
+    
+    
+    <!-- <mat-grid-tile rowspan="1" colspan="3">
+        <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+            {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+        </button>
+        <p class = "title">
+            Jornada
+        </p>
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            
+
+
+            <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                <p>You are now done. Fill your Departamento next.</p>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="displayDataJ()">Print</button>
+                    <button mat-button (click)="stepper.reset()">Reset</button>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </mat-grid-tile>
+    *************** -->
+
+
+    
+        
+   
+    <!-- DEPARTAMENTO Y JORNADA -->
+    <mat-grid-tile rowspan="2" colspan="3">
+        <p class = "title">
+            Jornada 
+                y
+            Departamento
+        </p>
+        <mat-vertical-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Ingrear el nombre y código de la jornada</ng-template>
+                    <mat-form-field>
+                        <mat-label>Código</mat-label>
+                        <input matInput placeholder="eg. 201701" formControlName="codJornada" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="eg. Matutina" formControlName="jornada" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Ingrear el nombre y código del departamento</ng-template>
+                    <mat-form-field>
+                        <mat-label>Código</mat-label>
+                        <input matInput placeholder="eg. 201606" formControlName="codDepa" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Departamento</mat-label>
+                        <input matInput placeholder="eg. Contabilidad" formControlName="depa" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>Listo</ng-template>
+                <p>¡Listo! Todos los datos se han almacenado.</p>
+                <div>
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <!-- Dev options -->
+                    <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+                    <button mat-button (click)="displayDataD()">Print</button>
+                    <button mat-button (click)="goBack()">Guardar y Regresar</button>
+                </div>
+            </mat-step>
+        </mat-vertical-stepper>
+    </mat-grid-tile>
+</mat-grid-list>

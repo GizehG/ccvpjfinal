@@ -1,0 +1,72 @@
+<div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>Editar un empleado</h3>
+</div>
+<mat-grid-list cols=3 rowHeight="45%">
+    <mat-grid-tile rowspan="2" colspan="3">
+        <mat-vertical-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Ingrese el código del empleado</ng-template>
+                    <mat-form-field>
+                        <mat-label>Código</mat-label>
+                        <input matInput placeholder="eg. 1328" formControlName="codigo" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>Datos del empleado</ng-template>
+                <p>Está a punto de editar al empleado {{nombreEmpleado}} con código {{codEmpleado}}.</p>
+                <p>¿Continuar?</p>
+                <div>
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <button mat-button matStepperNext>Continuar</button>
+                </div>
+            </mat-step>
+
+            <mat-step [stepControl]="thirdFormGroup">
+                <form [formGroup]="thirdFormGroup">
+                    <ng-template matStepLabel>Jornada o Departamento</ng-template>
+                    <p>Si no desea cambiar la jornada o el departamento dejelo en blanco.</p>
+                    <div class="order">
+                        <mat-form-field>
+                            <mat-label>Jornada</mat-label>
+                            <input matInput placeholder="eg. Matutina" formControlName="newJornada">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Departamento</mat-label>
+                            <input matInput placeholder="eg. DCF" formControlName="newDepa">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <button mat-button matStepperPrevious>Atrás</button>
+                        <button mat-button matStepperNext (click) = "update()">Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>¡Listo!</ng-template>
+                <p>{{mensajeIntro}}</p>
+                <p>{{mensajeHoraIn}}</p>
+                <p>{{mensajeHoraOut}}</p>
+                <div>
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <!-- Dev options -->
+                    <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+                    <button mat-button (click)="displayDataP2()">Print</button>
+                    <button mat-button (click)="goBack()">Guardar y Regresar</button>
+                </div>
+            </mat-step>
+        </mat-vertical-stepper>
+    </mat-grid-tile>
+
+
+</mat-grid-list>

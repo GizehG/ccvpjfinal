@@ -1,0 +1,92 @@
+@import url(https://fonts.googleapis.com/css?family=Teko:regular);
+@import url(https://fonts.googleapis.com/css?family=Actor);
+
+ section {
+    display: table;
+    margin: 8px;
+  }
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+  }
+  
+  .example-button-row button {
+    display: table-cell;
+    margin-right: 8px;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: center;
+    width: 480px;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    margin: 10px;;
+  }
+
+  .order {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  h3{
+    font-family: Actor;
+    margin-right: 20px;
+    font-size: 30px;
+  }
+
+.clock-box {
+    font-family: "Teko", sans-serif;
+    padding: 3em 1.5em;
+    background-image: linear-gradient(#7b4397, #27e2a4);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70% ;
+    animation: bgblob 4s infinite 0.5s;
+}
+
+.clock {
+    font-size: 3em;
+}
+
+.date {
+    font-size: 1.5em;
+}
+
+@keyframes bgblob {
+    0% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70% ;
+    }
+    25% {
+        border-radius: 75% 25% 45% 55% / 30% 30% 70% 70% ;
+    }
+    50% {
+        border-radius: 61% 39% 27% 73% / 62% 77% 23% 38% ;
+    }
+    75% {
+        border-radius: 38% 62% 74% 26% / 75% 57% 43% 25% ;
+    }
+    100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70% ;
+    }
+}
+
+.input-class {    
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .button-class {
+    
+    margin-left: calc(100% - 150px);
+    margin-right: calc(100% - 150px);
+  } 

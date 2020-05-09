@@ -1,0 +1,76 @@
+<mat-grid-list cols=3 rowHeight="30%">
+
+    <mat-grid-tile rowspan="1" colspan="1"></mat-grid-tile>
+
+    <mat-grid-tile rowspan="1" colspan="1">
+        <div style="align-self:flex-end;">
+            <h3>INGRESO DE MARCA</h3>
+        </div>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile rowspan="1" colspan="1"></mat-grid-tile>
+    <mat-grid-tile rowspan="1" colspan="1"></mat-grid-tile>
+
+    <!-- en medio centro -->
+    <mat-grid-tile rowspan="1" colspan="1">
+        <!-- <form> -->
+        <form [formGroup]="formsGrp">
+            <div class="order">
+                <mat-form-field appearance="outline" class="input-class">
+                    <mat-label>Número de identificación</mat-label>
+                    <input type="text" matInput formControlName="codigo" placeholder="eg. 1328">
+                    <mat-icon matPrefix>perm_identity</mat-icon>
+                </mat-form-field>
+                <!-- se puede agregar max y min -->
+                <div class="example-flex-container">
+                    <input  type="time" formControlName="horaIn" value="07:30" style="margin: 10px;">
+                    <input  type="time" formControlName="horaOut" value="20:05" style="margin: 10px;">
+                </div>
+
+                <div class="example-flex-container">
+                    <input  type="date" formControlName="fecha" placeholder="28-01-2017">
+                </div>
+
+                <div class="example-button-container">
+                    <button mat-raised-button color="accent" (click)="checkOut()" class="button-class">
+                        <mat-icon>access_time</mat-icon>
+                        Agregar
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </mat-grid-tile>
+
+    <mat-grid-tile rowspan="1" colspan="1"></mat-grid-tile>
+    <mat-grid-tile rowspan="1" colspan="1"></mat-grid-tile>
+
+    <mat-grid-tile rowspan="1" colspan="1">
+        <div class="clock-box">
+            <div class="clock" id="clock"></div>
+
+            <div class="date" id="date"></div>
+        </div>
+        <script type="text/javascript">
+            function myClock() {
+                var clock = document.getElementById("clock");
+                var date = document.getElementById("date");
+                var currentDate = new Date();
+
+                var hh = currentDate.getHours();
+                var mm = currentDate.getMinutes();
+                var ss = currentDate.getSeconds();
+                // console.log(clock.innerText);
+                clock.innerText = `${hh} : ${mm} : ${ss}`;
+                date.innerText = currentDate.toDateString();
+
+                setTimeout(myClock, 250);
+            }
+            myClock();     
+        </script>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile rowspan="1" colspan="1"></mat-grid-tile>
+</mat-grid-list>

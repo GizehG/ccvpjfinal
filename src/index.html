@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>IronCCV</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+</head>
+<body class="mat-typography" style="background-color:rgb(27, 27, 27);">
+  <app-root></app-root> 
+  
+  <div id = "clock"></div>    
+  <div id = "date"></div>
+  
+  <script type="text/javascript">
+    function myClock() {
+        var clock = document.getElementById("clock");
+        var date = document.getElementById("date");
+        var currentDate = new Date();
+
+        var hh = currentDate.getHours();
+        var mm = currentDate.getMinutes();
+        var ss = currentDate.getSeconds();
+        // console.log(clock.innerText);
+        clock.innerText = `${hh} : ${mm} : ${ss}`;
+        date.innerText = currentDate.toDateString();
+        
+        setTimeout(myClock, 250);
+    }
+    myClock();     
+  </script> 
+    
+
+</body>
+</html>

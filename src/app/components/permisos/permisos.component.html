@@ -1,0 +1,89 @@
+<div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>Ingresar un nuevo permiso</h3>
+</div>
+<mat-grid-list cols=3 rowHeight="45%">
+    <!-- <mat-grid-tile rowspan="1" colspan="3"></mat-grid-tile> -->
+    <mat-grid-tile rowspan="2" colspan="3">
+        <!-- <p class="title">
+            Permisos
+        </p> -->
+        <mat-vertical-stepper [linear]="isLinear" #stepper>
+            <!-- El código va a ser autoincrementable -->
+
+            <!-- <mat-step [stepControl]="thirdFormGroup">
+                <ng-template matStepLabel>Get a permiso code</ng-template>
+                <div class = "monospace">
+                    Código:   {{randomID}}
+                </div>
+                <button mat-button  (click) = "generateRandomID()">Generate</button>
+                <button mat-button matStepperNext >Next</button>
+            </mat-step> -->
+
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Ingrese el código del empleado y la fecha del permiso</ng-template>
+                    <mat-form-field>
+                        <mat-label>Código</mat-label>
+                        <input matInput placeholder="eg. 1328" formControlName="codigo" required>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Fecha</mat-label>
+                        <input matInput type="date" formControlName="fecha" required value="28/01/2017">
+                    </mat-form-field>
+                    <div>
+                        <!-- <button mat-button matStepperPrevious>Back</button> -->
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <!-- <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Ingrese si es salida o entrada</ng-template>
+                    <mat-form-field class="example-full-width">
+                        <mat-radio-button formControlName="isEntrada">Entrada</mat-radio-button>
+                        <mat-radio-button formControlName="isSalida">Salida</mat-radio-button>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperPrevious>Atrás</button>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step> -->
+
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Llenar el motivo del permiso</ng-template>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Motivo</mat-label>
+                        <textarea matInput placeholder="eg. Trafico" formControlName="motivo" rows="10"
+                            cols="40"></textarea>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperPrevious>Atrás</button>
+                        <button mat-button matStepperNext>Siguiente</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>¡Listo!</ng-template>
+                <p>El permiso ha sido agregado correctamente</p>
+                <div>
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <!-- Dev options -->
+                    <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+                    <button mat-button (click)="displayDataP2()">Print</button>
+                    <button mat-button (click)="goBack()">Guardar y Regresar</button>
+                </div>
+            </mat-step>
+        </mat-vertical-stepper>
+    </mat-grid-tile>
+
+
+</mat-grid-list>
